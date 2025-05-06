@@ -6,7 +6,7 @@ const weddingHalls = [
   {
     name: 'Royal Palace Hall',
     image: 'https://peshawarservicesclub.com/assets/img/halls/banquet/hall_3.jpg',
-    location: 'Chennai',
+    location: 'Namakkal',
     capacity: '500 Guests',
     price: 150000,
   },
