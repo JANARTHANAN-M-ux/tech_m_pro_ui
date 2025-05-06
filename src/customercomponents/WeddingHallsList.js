@@ -7,7 +7,7 @@ const weddingHalls = [
     name: 'Royal Palace Hall',
     image: 'https://peshawarservicesclub.com/assets/img/halls/banquet/hall_3.jpg',
     location: 'Namakkal',
-    capacity: '500 Guests',
+    capacity: '500 Guest',
     price: 150000,
   },
   {
