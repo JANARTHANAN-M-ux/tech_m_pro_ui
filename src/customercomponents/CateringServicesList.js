@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from './CartContext';
+import WeddingNavbar from './Navbar';
 
 const cateringServices = [
   {
@@ -62,6 +63,8 @@ function CateringServices() {
   };
 
   return (
+    <>
+    <WeddingNavbar/>
     <div style={{
       textAlign: 'center',
       padding: '40px',
@@ -72,12 +75,33 @@ function CateringServices() {
       color: 'white'
     }}>
       <h2 style={{
-        fontFamily: 'timesnewroman',
-        fontSize: '50px',
-        color: 'black'
-      }}>
-        CHOOSE YOUR CATERING SERVICE
-      </h2>
+  fontFamily: '"Playfair Display", serif',
+  fontSize: '50px',
+  textAlign: 'center',
+  background: 'linear-gradient(90deg,rgb(5, 161, 133),rgb(3, 70, 44))',
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'transparent',
+  textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
+  marginTop: '-10px',           
+  marginBottom: '10px',  
+  animation: 'fadeZoom 2s ease-in-out'
+}}>
+  INDULGE IN EXQUISITE CATERING SERVICES
+</h2>
+
+<style>{`
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+  @keyframes fadeZoom {
+    0% {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+`}</style>
 
       <div style={{
         display: 'flex',
@@ -154,7 +178,7 @@ function CateringServices() {
               fontSize: '16px'
             }}
           >
-            Submit
+           Add To Cart
           </button>
         </div>
       )}
@@ -173,15 +197,16 @@ function CateringServices() {
           zIndex: 1000,
           animation: 'fadeIn 1s'
         }}>
-          <span>Your catering service has been booked successfully!</span>
+          <span><strong>{selectedService.name}</strong> has been booked successfully!</span>
           <button
             onClick={closePopup}
             style={{
-              marginLeft: '20px',
-              backgroundColor: 'transparent',
-              color: 'white',
+              backgroundColor: '#fff',
+              color: 'green',
+              padding: '10px 20px',
               border: 'none',
-              fontSize: '18px',
+              borderRadius: '6px',
+              fontWeight: 'bold',
               cursor: 'pointer'
             }}
           >
@@ -204,6 +229,7 @@ function CateringServices() {
         }
       `}</style>
     </div>
+    </>
   );
 }
 

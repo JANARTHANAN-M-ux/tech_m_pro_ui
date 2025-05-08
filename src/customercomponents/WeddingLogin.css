@@ -1,74 +1,153 @@
-.form{
-    background-color: grey;
-    text-align: center;
-    margin-left: 550px;
-    margin-right: 550px;
-    font-size: 250%;
-    font-family: 'Times New Roman', Times, serif;
-    margin-bottom: 10%;
-    
-    
-    
-}
-#button{
-    font-size: 70%;
-    font-family: 'Times New Roman', Times, serif;
-    margin-bottom: 10%;
-    
+/* Main Login Background */
+.login {
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url('https://afar.brightspotcdn.com/dims4/default/c56d9ff/2147483647/strip/true/crop/2000x1000+0+167/resize/1440x720!/quality/90/?url=https%3A%2F%2Fk3-prod-afar-media.s3.us-west-2.amazonaws.com%2Fbrightspot%2F60%2F20%2F7e3b7d7ca7556c4f05a94b7e8321%2Foriginal-indian-wedding-ritual-henna.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-#h1{
-    font-size: 600%;
-    font-family: 'Times New Roman', Times, serif;
-    text-align: center;
+/* Main Heading */
+#h1 {
+  font-size: 100px;
+  font-family: 'Arial';
+  text-align: center;
+  color: #f56c09;
+  text-shadow: 4px 4px 6px rgba(255, 255, 255, 0.7);
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+  animation: fadeIn 2s ease-in-out;
 }
-.login{
-    background-image: url('https://images.unsplash.com/photo-1532712938310-34cb3982ef74?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D ');
-    background-repeat: no-repeat;
-    background-size: 100%; /* Ensures the image covers the entire background */
-    background-position:center;
-    height: 100vh;
+
+/* Input form container */
+.form {
+  background-color: rgba(240, 150, 90, 0.955);
+  text-align: center;
+  padding: 50px;
+  width: 80%;
+  max-width: 450px;
+  border-radius: 25px;
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease-in-out;
 }
-.dashboard{
-    background-image: url('https://getwallpapers.com/wallpaper/full/2/3/f/1128636-amazing-hd-wedding-backgrounds-2160x1440.jpg');
-    background-repeat: no-repeat;
-    background-size: 100%; /* Ensures the image covers the entire background */
-    background-position:center;
-    height: 100vh;
+
+.form:hover {
+  transform: scale(1.02);
 }
-#h2{
-    font-size: 50px;
-    font-family: 'Times New Roman', Times, serif;
-    text-align: center;
+
+/* Button styles */
+#button {
+  width: 100%;
+  font-size: 18px;
+  font-family: 'arial';
+  padding: 15px;
+  margin: 15px 0;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(45deg, #dfd9db, #ff8340);
+  color: rgb(18, 17, 17);
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.3s ease;
 }
+
+#button:hover {
+  background: linear-gradient(45deg, #efeced, #f99053);
+  transform: scale(1.05);
+}
+
+#button:active {
+  transform: scale(1);
+  background: linear-gradient(45deg, #f1edee, #f6f4f4);
+}
+
+/* Sub-heading */
+#h2 {
+  font-size: 50px;
+  font-family: 'Georgia', serif;
+  text-align: center;
+  color: #333;
+  margin-top: 10px;
+  animation: slideIn 1s ease-in-out;
+  animation: fadeIn 2s ease-in-out;
+  text-shadow: 4px 4px 6px rgba(17, 16, 16, 0.7);
+}
+
+/* Animation for fading in */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Card container */
 .cards-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
-    flex-wrap: wrap; /* allows wrapping on smaller screens */
-  }
-  
-  .card {
-    width: 200px;
-    height: 150px;
-    background-color: #f9c74f;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    box-shadow: 2px 2px 10px gray;
-    cursor: pointer;
-    margin: 10px;
-    transition: transform 0.2s;
-    font-family: 'Times New Roman', Times, serif;
-  }
-  
-  .card:hover {
-    transform: scale(1.05);
-    background-color: #f9844a;
-  }
-  
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
 
+/* Individual cards */
+.card {
+  width: 220px;
+  height: 160px;
+  background: linear-gradient(45deg, #ffca28, #f57c00);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  margin: 10px;
+  font-family: 'Georgia', serif;
+  font-size: 13px;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  transition: transform 0.3s, background 0.3s;
+}
 
-    
+.card:hover {
+  transform: scale(1.1);
+  background: linear-gradient(45deg, #f57c00, #ffca28);
+}
 
+/* Responsive tweaks for smaller screens */
+@media (max-width: 768px) {
+  #h1 {
+    font-size: 55px;
+  }
+  .form {
+    padding: 30px;
+  }
+  #button {
+    padding: 12px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  #h1 {
+    font-size: 45px;
+  }
+  .form {
+    width: 90%;
+    padding: 20px;
+  }
+}

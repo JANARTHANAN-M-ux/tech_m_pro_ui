@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from './CartContext';
+import WeddingNavbar from './Navbar';
 
 const weddingHalls = [
   {
     name: 'Royal Palace Hall',
     image: 'https://peshawarservicesclub.com/assets/img/halls/banquet/hall_3.jpg',
-    location: 'Namakkal',
+    location: 'Chennai',
     capacity: '500 Guests',
     price: 150000,
   },
@@ -64,22 +65,46 @@ function WeddingHalls() {
   };
 
   return (
+    <>
+    <WeddingNavbar />
     <div style={{
       textAlign: 'center',
       padding: '40px',
       minHeight: '100vh',
-      backgroundImage: `url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/410c2b172920057.6487bf4cc855c.jpg')`,
+      backgroundImage: `url('https://valura.in/wp-content/uploads/2024/11/Things-to-Check-Before-Booking-a-Wedding-Hall-in-Bangalore.jpg')`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       color: 'white'
     }}>
       <h2 style={{
-        fontFamily: 'timesnewroman',
-        fontSize: '50px',
-        color: 'black'
-      }}>
-        CHOOSE YOUR WEDDING HALL
-      </h2>
+  fontFamily: '"Playfair Display", serif',
+  fontSize: '60px',
+  textAlign: 'center',
+  background: 'linear-gradient(90deg,rgb(244, 77, 77),rgb(228, 135, 82))',
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'transparent',
+  textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
+  marginTop: '-10px',           
+  marginBottom: '10px',  
+  animation: 'fadeZoom 2s ease-in-out'
+}}>
+  CHOOSE YOUR WEDDING HALL
+</h2>
+
+<style>{`
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+  @keyframes fadeZoom {
+    0% {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+`}</style>
+
 
       <div style={{
         display: 'flex',
@@ -156,7 +181,7 @@ function WeddingHalls() {
               transition: 'background-color 0.3s'
             }}
           >
-            Submit
+            Add To Cart
           </button>
         </div>
       )}
@@ -175,15 +200,16 @@ function WeddingHalls() {
           zIndex: 1000,
           animation: 'fadeIn 1s'
         }}>
-          <span>Your wedding hall has been added to cart!</span>
+          <span><strong>{selectedHall.name}</strong> has been added to cart!</span>
           <button
             onClick={closePopup}
             style={{
-              marginLeft: '20px',
-              backgroundColor: 'transparent',
-              color: 'white',
+              backgroundColor: '#fff',
+              color: 'green',
+              padding: '10px 20px',
               border: 'none',
-              fontSize: '18px',
+              borderRadius: '6px',
+              fontWeight: 'bold',
               cursor: 'pointer'
             }}
           >
@@ -206,6 +232,7 @@ function WeddingHalls() {
         }
       `}</style>
     </div>
+    </>
   );
 }
 

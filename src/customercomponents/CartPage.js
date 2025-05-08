@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useCart } from './CartContext';
+import WeddingNavbar from './Navbar';
 
 function CartPage() {
   const { cartItems, clearCart } = useCart();
@@ -57,6 +58,7 @@ function CartPage() {
       maxWidth: '600px',
       margin: '40px auto',
       background: '#fff',
+      background: 'linear-gradient(135deg, #fff5e6, #ffd1a4)',
       padding: '25px',
       borderRadius: '12px',
       boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
@@ -107,7 +109,7 @@ function CartPage() {
       marginTop: '20px',
     },
     clearBtn: {
-      background: '#ff4d4d',
+      background: '#ff6b6b',
       color: 'white',
       border: 'none',
       padding: '10px 15px',
@@ -115,7 +117,7 @@ function CartPage() {
       cursor: 'pointer',
     },
     payBtn: {
-      background: '#4CAF50',
+      background: '#ff8800',
       color: 'white',
       border: 'none',
       padding: '10px 15px',
@@ -134,6 +136,8 @@ function CartPage() {
   };
 
   return (
+    <>
+    <WeddingNavbar/>
     <div style={styles.container}>
       <h2 style={styles.title}>🛒 My Bookings</h2>
 
@@ -178,7 +182,7 @@ function CartPage() {
               value={address}
               onChange={(e) => setAddress(e.target.value)}
               rows="3"
-              placeholder="Enter your delivery address"
+              placeholder="Enter your address"
               style={styles.input}
             />
 
@@ -215,6 +219,7 @@ function CartPage() {
         </div>
       )}
     </div>
+    </>
   );
 }
 

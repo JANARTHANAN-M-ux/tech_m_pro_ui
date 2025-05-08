@@ -1,6 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './WeddingLogin.css';
+import WeddingNavbar from './Navbar';
+import WeddingFooter from './WeddingFooter';
+import WeddingImageCarousel from './slides';
+
 
 function WeddingDashboard() {
   const navigate = useNavigate();
@@ -10,8 +14,11 @@ function WeddingDashboard() {
   };
 
   return (
+    <>
     <div className="dashboard">
-      <h2 id='h2'>Welcome to the Wedding Planner Dashboard</h2>
+    <WeddingNavbar />
+    <WeddingImageCarousel /><br/>
+      <h2 id='h2'>To love and be loved is to feel the sun from both sides.</h2><br/>
       <div className="cards-container">
         <div className="card" onClick={() => handleCardClick('/wedding-halls')}>
           <h3>Wedding Halls</h3>
@@ -32,7 +39,9 @@ function WeddingDashboard() {
           <h3>Admin Panel</h3>
         </div>
       </div>
-    </div>
+    </div><br/><br/><br/><br/><br/><br/>
+    <WeddingFooter />
+    </>
   );
 }
 

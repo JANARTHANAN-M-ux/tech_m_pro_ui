@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from './CartContext';
+import WeddingNavbar from './Navbar';
 
 const photographyServices = [
   {
@@ -59,6 +60,8 @@ export default function PhotographyServices() {
   };
 
   return (
+    <>
+    <WeddingNavbar/>
     <div
       style={{
         textAlign: 'center',
@@ -71,17 +74,34 @@ export default function PhotographyServices() {
         color: 'white',
       }}
     >
-      <h2
-        style={{
-          fontFamily: 'timesnewroman',
-          fontSize: '50px',
-          color: 'black',
-          marginBottom: '30px',
-        }}
-      >
-        CHOOSE YOUR PHOTOGRAPHY SERVICE
-      </h2>
+      <h2 style={{
+  fontFamily: '"Playfair Display", serif',
+  fontSize: '48px',
+  textAlign: 'center',
+  background: 'linear-gradient(90deg,rgb(3, 3, 3),rgb(228, 135, 82))',
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'transparent',
+  textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
+  marginTop: '-10px',           
+  marginBottom: '10px',  
+  animation: 'fadeZoom 2s ease-in-out'
+}}>
+  SELECT THE LENS THAT CAPTURE YOUR BEAUTY
+</h2>
 
+<style>{`
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+  @keyframes fadeZoom {
+    0% {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+`}</style>
       <div
         style={{
           display: 'flex',
@@ -176,7 +196,7 @@ export default function PhotographyServices() {
               fontSize: '16px',
             }}
           >
-            Submit
+           Add To Cart
           </button>
         </div>
       )}
@@ -197,16 +217,17 @@ export default function PhotographyServices() {
             animation: 'fadeIn 1s',
           }}
         >
-          <span>Your photography service has been booked successfully!</span>
+          <span><strong>{selectedService.name}</strong> has been booked successfully!</span>
           <button
             onClick={closePopup}
             style={{
-              marginLeft: '20px',
-              backgroundColor: 'transparent',
-              color: 'white',
+              backgroundColor: '#fff',
+              color: 'green',
+              padding: '10px 20px',
               border: 'none',
-              fontSize: '18px',
-              cursor: 'pointer',
+              borderRadius: '6px',
+              fontWeight: 'bold',
+              cursor: 'pointer'
             }}
           >
             Go to Cart
@@ -228,5 +249,6 @@ export default function PhotographyServices() {
         }
       `}</style>
     </div>
+    </>
   );
 }

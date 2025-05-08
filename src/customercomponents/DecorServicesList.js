@@ -1,7 +1,7 @@
-// DecorServices.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from './CartContext';
+import WeddingNavbar from './Navbar';
 
 const decorServices = [
   {
@@ -20,7 +20,7 @@ const decorServices = [
   },
   {
     name: 'Elegant Lights & Drapes',
-    image: 'https://matrimonialgurus.com/wp-content/uploads/2021/07/decorate-wedding-mandap-flowers-beautiful-flower-decoration-ideas-wedding-day-1.jpeg',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiatUVlzML2DVt3liAU_tvwwm9ZJC875MRkfYAlm6TmedU5YNGQg&s=10&ec=72940544',
     location: 'Madurai',
     style: 'Indoor Light & Fabric',
     price: 40000,
@@ -42,28 +42,25 @@ const decorServices = [
 ];
 
 export default function DecorServices() {
-  const [selectedDecor, setSelectedDecor] = useState(null);
+  const [selectedService, setSelectedService] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
   const { addToCart } = useCart();
   const navigate = useNavigate();
 
   const handleSubmit = () => {
-    if (!selectedDecor) return;
-    addToCart(selectedDecor);
+    if (!selectedService) return;
+    addToCart(selectedService);
     setShowPopup(true);
-
-    // after 1.5s, hide popup and go to cart
-    setTimeout(() => {
-      setShowPopup(false);
-      navigate('/cart');
-    }, 1500);
   };
 
   const closePopup = () => {
     setShowPopup(false);
+    navigate('/cart');
   };
 
   return (
+    <>
+    <WeddingNavbar />
     <div
       style={{
         textAlign: 'center',
@@ -76,17 +73,34 @@ export default function DecorServices() {
         color: 'white',
       }}
     >
-      <h2
-        style={{
-          fontFamily: 'timesnewroman',
-          fontSize: '50px',
-          color: 'black',
-          marginBottom: '30px',
-        }}
-      >
-        ENJOY WITH YOUR FAVOURITE DECOR
-      </h2>
+      <h2 style={{
+  fontFamily: '"Playfair Display", serif',
+  fontSize: '49px',
+  textAlign: 'center',
+  background: 'linear-gradient(90deg,rgb(0, 0, 0),rgb(139, 38, 92))',
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'transparent',
+  textShadow: '2px 2px 4px rgba(246, 243, 243, 0.3)',
+  marginTop: '-10px',           
+  marginBottom: '10px',  
+  animation: 'fadeZoom 2s ease-in-out'
+}}>
+  DESIGN YOUR PERFECT WEDDING AMBIENCE
+</h2>
 
+<style>{`
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+  @keyframes fadeZoom {
+    0% {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+`}</style>
       <div
         style={{
           display: 'flex',
@@ -95,9 +109,9 @@ export default function DecorServices() {
           gap: '30px',
         }}
       >
-        {decorServices.map((decor) => (
+        {decorServices.map((service) => (
           <label
-            key={decor.name}
+            key={service.name}
             style={{
               width: '250px',
               backgroundColor: 'rgba(0,0,0,0.6)',
@@ -105,17 +119,21 @@ export default function DecorServices() {
               padding: '15px',
               cursor: 'pointer',
               border:
-                selectedDecor?.name === decor.name
+                selectedService?.name === service.name
                   ? '3px solid #ffd700'
                   : 'none',
-              transition: 'transform 0.2s',
+              transition: 'transform 0.2s ease-in-out',
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
-            onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.transform = 'scale(1.05)')
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.transform = 'scale(1)')
+            }
           >
             <img
-              src={decor.image}
-              alt={decor.name}
+              src={service.image}
+              alt={service.name}
               style={{
                 width: '100%',
                 height: '160px',
@@ -127,24 +145,24 @@ export default function DecorServices() {
               <input
                 type="radio"
                 name="decor"
-                onChange={() => setSelectedDecor(decor)}
+                onChange={() => setSelectedService(service)}
               />{' '}
-              <strong>{decor.name}</strong>
-              <p style={{ margin: '5px 0' }}>{decor.location}</p>
-              <p style={{ margin: '5px 0' }}>{decor.style}</p>
+              <strong>{service.name}</strong>
+              <p style={{ margin: '5px 0' }}>{service.location}</p>
+              <p style={{ margin: '5px 0' }}>{service.style}</p>
               <p style={{ fontWeight: 'bold', color: '#ffd700' }}>
-                ₹{decor.price.toLocaleString()}
+                ₹{service.price.toLocaleString()}
               </p>
             </div>
           </label>
         ))}
       </div>
 
-      {selectedDecor && (
+      {selectedService && (
         <div
           style={{
             marginTop: '40px',
-            backgroundColor: 'rgba(0,0,0,0.5)',
+            backgroundColor: 'rgba(0,0,0,0.8)',
             padding: '20px',
             borderRadius: '12px',
             maxWidth: '500px',
@@ -152,17 +170,17 @@ export default function DecorServices() {
           }}
         >
           <h3 className="blinking-text">
-            You selected: {selectedDecor.name}
+            You selected: {selectedService.name}
           </h3>
           <p>
-            <strong>Location:</strong> {selectedDecor.location}
+            <strong>Location:</strong> {selectedService.location}
           </p>
           <p>
-            <strong>Theme:</strong> {selectedDecor.style}
+            <strong>Style:</strong> {selectedService.style}
           </p>
           <p>
             <strong>Total Price:</strong> ₹
-            {selectedDecor.price.toLocaleString()}
+            {selectedService.price.toLocaleString()}
           </p>
           <button
             onClick={handleSubmit}
@@ -177,7 +195,7 @@ export default function DecorServices() {
               fontSize: '16px',
             }}
           >
-            Submit
+            Add To Cart
           </button>
         </div>
       )}
@@ -198,19 +216,20 @@ export default function DecorServices() {
             animation: 'fadeIn 1s',
           }}
         >
-          <span>Your decor service has been added to cart!</span>
+          <span> <strong>{selectedService.name}</strong> has been booked successfully!</span>
           <button
             onClick={closePopup}
             style={{
-              marginLeft: '20px',
-              backgroundColor: 'transparent',
-              color: 'white',
+              backgroundColor: '#fff',
+              color: 'green',
+              padding: '10px 20px',
               border: 'none',
-              fontSize: '18px',
-              cursor: 'pointer',
+              borderRadius: '6px',
+              fontWeight: 'bold',
+              cursor: 'pointer'
             }}
           >
-            ✖
+            Go to Cart
           </button>
         </div>
       )}
@@ -229,5 +248,7 @@ export default function DecorServices() {
         }
       `}</style>
     </div>
+    
+    </>
   );
 }
